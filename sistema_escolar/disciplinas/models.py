@@ -1,9 +1,11 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from classe.models import Classe
 
 class Disciplina(models.Model):
     nome = models.CharField(max_length=100, unique=True)
     codigo = models.CharField(max_length=10, unique=True)
+    classe = models.ManyToManyField(Classe, related_name='disciplinas')
     
     carga_horaria = models.IntegerField()
     
